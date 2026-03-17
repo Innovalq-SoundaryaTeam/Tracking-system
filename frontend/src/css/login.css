@@ -1,0 +1,219 @@
+/* =====================================================
+   LOGIN PAGE SPECIFIC STYLES
+   Login page styles
+===================================================== */
+
+.login-page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.login-card {
+  width: 420px;
+  padding: 40px 35px;
+  border-radius: 24px;
+  background: var(--glass, rgba(255, 255, 255, 0.06));
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border, rgba(255, 255, 255, 0.1));
+  box-shadow: 0 25px 50px -8px rgba(0, 0, 0, 0.4);
+  animation: slideUpFade 0.5s ease-out;
+}
+
+/* Text Center Utility */
+.text-center {
+  text-align: center;
+}
+
+/* Margin Bottom Utility */
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.mb-30 {
+  margin-bottom: 30px;
+}
+
+/* Form Group */
+.login-page .form-group {
+  margin-bottom: 22px;
+}
+
+.login-page .form-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-muted, #94a3b8);
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+.login-page .form-input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1.5px solid var(--border, rgba(255, 255, 255, 0.1));
+  background: rgba(0, 0, 0, 0.2);
+  color: var(--text-main, #f8fafc);
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.login-page .form-input:focus {
+  border-color: var(--primary, #3b82f6);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.login-page .form-input::placeholder {
+  color: rgba(148, 163, 184, 0.4);
+  font-size: 0.9rem;
+}
+
+/* Button Styles */
+.login-page .btn {
+  width: 100%;
+  padding: 14px 20px;
+  border-radius: 14px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: inherit;
+  background: linear-gradient(135deg, var(--primary, #3b82f6), var(--primary-dark, #2563eb));
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+  letter-spacing: 0.5px;
+  margin-top: 10px;
+}
+
+.login-page .btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(59, 130, 246, 0.45);
+}
+
+.login-page .btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.login-page .btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: linear-gradient(135deg, #64748b, #475569);
+  box-shadow: none;
+}
+
+/* Error Message */
+.login-page .error {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #fecaca;
+  padding: 14px 16px;
+  border-radius: 14px;
+  margin-bottom: 25px;
+  font-size: 0.9rem;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  animation: shake 0.4s ease-in-out;
+}
+
+/* Loading State */
+.login-page .btn.loading {
+  position: relative;
+  color: transparent;
+}
+
+.login-page .btn.loading::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid white;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 0.8s linear infinite;
+}
+
+/* Animations */
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-5px); }
+  40% { transform: translateX(5px); }
+  60% { transform: translateX(-3px); }
+  80% { transform: translateX(3px); }
+}
+
+@keyframes spin {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .login-card {
+    width: 100%;
+    padding: 30px 20px;
+  }
+  
+  .login-page {
+    padding: 15px;
+  }
+  
+  .login-page .form-input {
+    padding: 12px 14px;
+  }
+  
+  .login-page .btn {
+    padding: 12px 20px;
+  }
+}
+
+/* Optional: Add a subtle background effect */
+.login-page::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+              radial-gradient(circle at 80% 70%, rgba(37, 99, 235, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Password field specific */
+.login-page input[type="password"] {
+  letter-spacing: 2px;
+}
+
+.login-page input[type="password"]::placeholder {
+  letter-spacing: normal;
+}
+
+#root {
+  min-height: 100vh;
+  min-height: 100dvh;
+}

@@ -1,0 +1,258 @@
+.location-route-page {
+  padding: 24px;
+  height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  background: #f8fafc;
+  box-sizing: border-box;
+}
+
+.lr-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.lr-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin: 0 0 2px;
+}
+
+.lr-subtitle {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0;
+}
+
+.lr-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.btn-set-shop {
+  padding: 9px 18px;
+  border-radius: 9px;
+  border: 2px solid #6366f1;
+  background: transparent;
+  color: #6366f1;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.btn-set-shop:hover {
+  background: #eef2ff;
+}
+
+.btn-set-shop.active {
+  background: #6366f1;
+  color: white;
+  animation: blink 1.3s infinite;
+}
+
+.lr-legend {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: #64748b;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 6px 12px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.ldot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  font-size: 10px;
+  font-weight: bold;
+  color: white;
+  border: 2px solid white;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+
+.ldot.shop   { background: #ef4444; }
+.ldot.urgent { background: #dc2626; }
+.ldot.high   { background: #f97316; }
+.ldot.normal { background: #2563eb; }
+
+/* Main layout */
+.lr-content {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 16px;
+  flex: 1;
+  min-height: 0;
+}
+
+.lr-map-wrap {
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  border: 1px solid #e5e7eb;
+}
+
+.lr-map-wrap.crosshair {
+  cursor: crosshair !important;
+}
+
+.lr-map-wrap.crosshair * {
+  cursor: crosshair !important;
+}
+
+/* Route List */
+.lr-route-list {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+  border: 1px solid #e5e7eb;
+  padding: 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.lr-list-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.lr-stop-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 8px;
+  border-radius: 10px;
+  transition: background 0.15s;
+}
+
+.lr-stop-row:hover {
+  background: #f8fafc;
+}
+
+.shop-row {
+  background: #fff7f7;
+  border: 1px solid #fecaca;
+}
+
+.lr-stop-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 13px;
+  color: white;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.shop-num {
+  background: #ef4444;
+  width: 36px;
+  height: 36px;
+  font-size: 15px;
+}
+
+.lr-stop-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+}
+
+.lr-stop-name {
+  font-weight: 700;
+  font-size: 14px;
+  color: #1e293b;
+}
+
+.lr-stop-meta {
+  font-size: 12px;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2px;
+}
+
+.lr-stop-contact {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+.p-tag {
+  border-radius: 999px;
+  padding: 1px 8px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.p-tag.p-urgent { background: #fee2e2; color: #991b1b; }
+.p-tag.p-high   { background: #ffedd5; color: #9a3412; }
+.p-tag.p-normal { background: #dbeafe; color: #1e40af; }
+
+.lr-arrow {
+  text-align: center;
+  color: #cbd5e1;
+  font-size: 18px;
+  line-height: 1.2;
+  margin: 2px 0;
+  padding-left: 10px;
+}
+
+.lr-empty {
+  text-align: center;
+  color: #94a3b8;
+  padding: 30px 10px;
+  font-size: 14px;
+}
+
+.lr-loading {
+  text-align: center;
+  color: #64748b;
+  padding: 60px;
+  font-size: 16px;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@media (max-width: 900px) {
+  .lr-content {
+    grid-template-columns: 1fr;
+    grid-template-rows: 400px 1fr;
+  }
+
+  .location-route-page {
+    height: auto;
+  }
+}

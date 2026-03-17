@@ -1,0 +1,45 @@
+.seller-card {
+  display: flex;
+  justify-content: space-between; /* This pushes info to left and actions to right */
+  align-items: center;           /* Centers buttons vertically with the text */
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  border-left: 5px solid #1a237e;
+}
+
+.seller-info {
+  flex: 1; /* Allows the info section to take up available space */
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: row; /* Change to row if you want them side-by-side on the right */
+  gap: 10px;
+  margin-left: 20px;   /* Adds breathing room between text and buttons */
+}
+
+.btn-edit-small {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-delete-small {
+  background-color: transparent;
+  color: #ef4444;
+  border: 1px solid #ef4444;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-delete-small:hover {
+  background-color: #ef4444;
+  color: white;
+}

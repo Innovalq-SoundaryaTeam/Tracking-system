@@ -1,0 +1,122 @@
+.all-jobs-page.main-content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.all-jobs-page .page-header {
+  margin-bottom: 16px;
+}
+
+.all-jobs-page .page-header h1 {
+  margin: 0;
+}
+
+.all-jobs-page .sub-text {
+  margin-top: 6px;
+  color: #6b7280;
+}
+
+.all-jobs-page .card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  padding: 18px;
+  overflow-x: auto;
+}
+
+.all-jobs-page .admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 760px;
+}
+
+.all-jobs-page .admin-table th,
+.all-jobs-page .admin-table td {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 14px;
+}
+
+.all-jobs-page .admin-table th {
+  color: #1f2937;
+  font-weight: 700;
+}
+
+.all-jobs-page .serial {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.all-jobs-page .badge {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.all-jobs-page .status-waiting {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.all-jobs-page .status-assigned,
+.all-jobs-page .status-picked_up,
+.all-jobs-page .status-in_transit,
+.all-jobs-page .status-proof_uploaded {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.all-jobs-page .status-completed {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.all-jobs-page .status-cancelled {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.all-jobs-page .priority-normal {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.all-jobs-page .priority-high {
+  background: #ffedd5;
+  color: #9a3412;
+}
+
+.all-jobs-page .priority-urgent {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.all-jobs-page .link-btn {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: #dbeafe;
+  color: #1e3a8a;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.all-jobs-page .loading,
+.all-jobs-page .empty-state {
+  padding: 18px;
+  text-align: center;
+  color: #6b7280;
+}
+
+@media (max-width: 900px) {
+  .all-jobs-page.main-content {
+    padding: 18px 14px;
+  }
+}

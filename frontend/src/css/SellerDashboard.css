@@ -1,0 +1,218 @@
+.seller-dashboard.main-content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.seller-dashboard .loading {
+  text-align: center;
+  padding: 30px;
+  color: #64748b;
+}
+
+.seller-dashboard .alert-box {
+  background: #fef3c7;
+  color: #78350f;
+  border: 1px solid #f59e0b;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  margin: 12px 0 16px;
+}
+
+.seller-dashboard .notification-btn {
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  color: #111827;
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+
+.seller-dashboard .notification-btn.has-alert {
+  border-color: #ef4444;
+  background: #fef2f2;
+  color: #991b1b;
+}
+
+.seller-dashboard .notification-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  margin-left: 8px;
+  padding: 0 6px;
+  background: #ef4444;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.seller-dashboard .notif-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  padding: 16px;
+}
+
+.seller-dashboard .notif-modal {
+  width: min(560px, 100%);
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.2);
+}
+
+.seller-dashboard .notif-list {
+  margin: 10px 0;
+  padding-left: 18px;
+}
+
+.seller-dashboard .notif-actions {
+  margin-top: 12px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.seller-dashboard .text-secondary {
+  color: #64748b;
+}
+
+.seller-dashboard .text-center {
+  text-align: center;
+}
+
+.seller-dashboard .grid {
+  display: grid;
+  gap: 16px;
+}
+
+.seller-dashboard .grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.seller-dashboard .card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  padding: 18px;
+}
+
+.seller-dashboard .mt-20 {
+  margin-top: 20px;
+}
+
+.seller-dashboard .mb-10 {
+  margin-bottom: 10px;
+}
+
+.seller-dashboard .flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.seller-dashboard .btn {
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-weight: 600;
+  color: #fff;
+  background: #1d4ed8;
+  cursor: pointer;
+}
+
+.seller-dashboard table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.seller-dashboard th,
+.seller-dashboard td {
+  padding: 10px;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+  font-size: 14px;
+}
+
+.seller-dashboard th {
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.seller-dashboard .status-badge {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.seller-dashboard .status-waiting {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.seller-dashboard .status-assigned,
+.seller-dashboard .status-picked-up,
+.seller-dashboard .status-in-transit {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.seller-dashboard .status-proof-uploaded {
+  background: #ede9fe;
+  color: #6d28d9;
+}
+
+.seller-dashboard .status-completed {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.seller-dashboard .status-cancelled {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.seller-dashboard .priority-normal {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.seller-dashboard .priority-high {
+  background: #ffedd5;
+  color: #9a3412;
+}
+
+.seller-dashboard .priority-urgent {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+@media (max-width: 900px) {
+  .seller-dashboard.main-content {
+    padding: 18px 14px;
+  }
+
+  .seller-dashboard .grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .seller-dashboard .flex-between {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

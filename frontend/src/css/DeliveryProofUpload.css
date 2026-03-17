@@ -1,0 +1,93 @@
+.delivery-proof-upload.card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  padding: 18px;
+}
+
+.delivery-proof-upload .form-group {
+  margin-bottom: 16px;
+}
+
+.delivery-proof-upload .form-label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.delivery-proof-upload .form-input {
+  width: 100%;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #fff;
+  color: #0f172a;
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+.delivery-proof-upload .form-input:focus {
+  outline: 2px solid rgba(29, 78, 216, 0.2);
+  border-color: #1d4ed8;
+}
+
+.delivery-proof-upload .btn {
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 14px;
+  color: #fff;
+  background: #1d4ed8;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.delivery-proof-upload .btn-success {
+  background: #15803d;
+}
+
+.delivery-proof-upload .btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.delivery-proof-upload .error,
+.delivery-proof-upload .success {
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 14px;
+  border: 1px solid transparent;
+}
+
+.delivery-proof-upload .error {
+  background: #fef2f2;
+  color: #991b1b;
+  border-color: #fecaca;
+}
+
+.delivery-proof-upload .success {
+  background: #f0fdf4;
+  color: #166534;
+  border-color: #bbf7d0;
+}
+
+.delivery-proof-upload .text-secondary {
+  color: #64748b;
+}
+
+.delivery-proof-upload .flex {
+  display: flex;
+}
+
+.delivery-proof-upload .gap-10 {
+  gap: 10px;
+}
+
+.delivery-proof-upload .mb-10 {
+  margin-bottom: 10px;
+}
+
+.delivery-proof-upload .mb-20 {
+  margin-bottom: 20px;
+}

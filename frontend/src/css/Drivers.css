@@ -1,0 +1,108 @@
+.page-container {
+  padding: 20px;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+}
+
+.data-table th {
+  text-align: left;
+  padding: 15px;
+  color: #6c757d;
+}
+
+.data-table tr {
+  background: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  border-radius: 8px;
+}
+
+.data-table td {
+  padding: 15px;
+}
+
+.status-badge {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.active { background: #d4edda; color: #155724; }
+.offline { background: #f8d7da; color: #721c24; }
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.btn-add {
+  background-color: #10b981;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-delete {
+  background: none;
+  color: #ef4444;
+  border: 1px solid #ef4444;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-delete:hover {
+  background: #ef4444;
+  color: white;
+}
+
+/* Use the same Modal styles from StockManagement.css */
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-edit {
+  background-color: #3b82f6; /* Blue */
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-edit:hover {
+  background-color: #2563eb;
+}
+
+.btn-delete {
+  background-color: #ef4444; /* Red */
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-delete:hover {
+  background-color: #dc2626;
+}
+
+.modal-content input {
+  display: block;
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
