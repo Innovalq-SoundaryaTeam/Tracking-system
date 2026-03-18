@@ -68,6 +68,7 @@ _allowed_origins = [
     "http://127.0.0.1:5173",
     "http://localhost:5174",
     "http://127.0.0.1:5174",
+    "https://gentle-mousse-e68908.netlify.app",
 ]
 if _frontend_url:
     _allowed_origins.append(_frontend_url)
