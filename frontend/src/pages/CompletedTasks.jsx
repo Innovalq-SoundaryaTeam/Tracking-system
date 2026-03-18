@@ -71,7 +71,7 @@ function CompletedTasks() {
 
               {job.delivery_proofs && job.delivery_proofs.length > 0 && (
                 <img
-                  src={`http://localhost:8000/uploads/${job.delivery_proofs[0].image_path}`}
+                  src={`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/uploads/${job.delivery_proofs[0].image_path}`}
                   alt="Delivery Proof"
                   style={{
                     width: "100%",

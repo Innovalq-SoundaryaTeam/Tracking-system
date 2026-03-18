@@ -35,7 +35,7 @@ function Login() {
       }
 
       // 2️⃣ Fetch current user (KEEPING YOUR STRUCTURE - using fetch)
-      const userResponse = await fetch("http://localhost:8000/users/me", {
+      const userResponse = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/users/me`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
