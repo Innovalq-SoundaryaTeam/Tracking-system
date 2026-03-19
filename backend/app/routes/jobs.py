@@ -409,6 +409,76 @@ def cancel_job(
     
     return job
 
+@router.put("/{job_id}", response_model=JobResponse)
+def update_job(
+    job_id: int,
+    job_update: JobUpdate,
+    current_user: User = Depends(require_role("SELLER", "ADMIN")),
+    db: Session = Depends(get_db)
+):
+    """Edit a job (only if status is WAITING and seller owns it)"""
+    job = db.query(Job).filter(Job.id == job_id).first()
+    if not job:
+        raise HTTPException(status_code=404, detail="Job not found")
+
+    if current_user.role.value == "SELLER" and job.seller_id != current_user.id:
+        raise HTTPException(status_code=403, detail="Not authorized to edit this job")
+
+    if job.status != JobStatus.WAITING:
+        raise HTTPException(status_code=400, detail="Only WAITING jobs can be edited")
+
+    if job_update.shop_name is not None:
+        job.shop_name = job_update.shop_name
+    if job_update.shop_contact is not None:
+        job.shop_contact = job_update.shop_contact
+    if job_update.notes is not None:
+        job.notes = job_update.notes
+    if job_update.latitude is not None:
+        job.latitude = job_update.latitude
+    if job_update.longitude is not None:
+        job.longitude = job_update.longitude
+    if job_update.quantity is not None:
+        job.quantity = job_update.quantity
+        job.total_price = job.price_per_case * job_update.quantity
+    if job_update.priority is not None:
+        job.priority = job_update.priority
+
+    db.commit()
+    db.refresh(job)
+    log_activity(db, current_user.id, f"Edited job {job.serial_number}")
+    return job
+
+
+@router.delete("/{job_id}")
+def delete_job(
+    job_id: int,
+    current_user: User = Depends(require_role("SELLER", "ADMIN")),
+    db: Session = Depends(get_db)
+):
+    """Delete a job (only if status is WAITING and seller owns it)"""
+    job = db.query(Job).filter(Job.id == job_id).first()
+    if not job:
+        raise HTTPException(status_code=404, detail="Job not found")
+
+    if current_user.role.value == "SELLER" and job.seller_id != current_user.id:
+        raise HTTPException(status_code=403, detail="Not authorized to delete this job")
+
+    if job.status != JobStatus.WAITING:
+        raise HTTPException(status_code=400, detail="Only WAITING jobs can be deleted")
+
+    # Restore stock
+    stock = db.query(ProductionStock).first()
+    if stock and stock.total_produced > 0:
+        stock.available_stock += job.quantity
+
+    # Delete related payment
+    db.query(Payment).filter(Payment.job_id == job_id).delete()
+    db.delete(job)
+    db.commit()
+    log_activity(db, current_user.id, f"Deleted job {job.serial_number}")
+    return {"message": "Job deleted successfully"}
+
+
 @router.get("/daily-stats")
 def get_daily_stats(
     date: str = Query(...),

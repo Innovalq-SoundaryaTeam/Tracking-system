@@ -7,6 +7,7 @@ import SellerDashboard from './pages/SellerDashboard';
 import DriverDashboard from './pages/DriverDashboard';
 import AllJobs from './pages/AllJobs';
 import CreateJob from './pages/CreateJob';
+import EditJob from './pages/EditJob';
 import MyAssignments from './pages/MyAssignments';
 import AvailableJobs from './pages/AvailableJobs';
 import Drivers from './pages/Drivers';
@@ -105,6 +106,17 @@ function App() {
             <ProtectedRoute requiredRole={isSeller}>
               <Layout>
                 <CreateJob />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/edit-job/:jobId"
+          element={
+            <ProtectedRoute requiredRole={isSeller}>
+              <Layout>
+                <EditJob />
               </Layout>
             </ProtectedRoute>
           }

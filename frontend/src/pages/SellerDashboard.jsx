@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { jobsAPI } from '../services/api';
 import '../css/SellerDashboard.css';
 
 function SellerDashboard() {
+  const navigate = useNavigate();
   const [stats, setStats] = useState({
     totalJobs: 0,
     waitingJobs: 0,
@@ -104,6 +106,16 @@ function SellerDashboard() {
     localStorage.setItem('seller_seen_alerts', JSON.stringify(seenAlerts));
   }, [seenAlerts]);
 
+  const handleDelete = async (jobId, serialNumber) => {
+    if (!window.confirm(`Delete job ${serialNumber}? This cannot be undone.`)) return;
+    try {
+      await jobsAPI.deleteJob(jobId);
+      fetchDashboardData(false);
+    } catch (err) {
+      alert(err.response?.data?.detail || 'Failed to delete job');
+    }
+  };
+
   if (loading) return <div className="loading">Loading dashboard...</div>;
 
   return (
@@ -187,6 +199,7 @@ function SellerDashboard() {
                     <th style={{ padding: '10px', textAlign: 'left' }}>Priority</th>
                     <th style={{ padding: '10px', textAlign: 'left' }}>Status</th>
                     <th style={{ padding: '10px', textAlign: 'left' }}>Created</th>
+                    <th style={{ padding: '10px', textAlign: 'left' }}>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -204,6 +217,26 @@ function SellerDashboard() {
                         </span>
                       </td>
                       <td style={{ padding: '10px' }}>{new Date(job.created_at).toLocaleDateString()}</td>
+                      <td style={{ padding: '10px' }}>
+                        {job.status === 'WAITING' && (
+                          <div style={{ display: 'flex', gap: '6px' }}>
+                            <button
+                              className="btn"
+                              style={{ padding: '4px 10px', fontSize: '12px' }}
+                              onClick={() => navigate(`/edit-job/${job.id}`)}
+                            >
+                              Edit
+                            </button>
+                            <button
+                              className="btn"
+                              style={{ padding: '4px 10px', fontSize: '12px', background: '#dc2626' }}
+                              onClick={() => handleDelete(job.id, job.serial_number)}
+                            >
+                              Delete
+                            </button>
+                          </div>
+                        )}
+                      </td>
                     </tr>
                   ))}
                 </tbody>

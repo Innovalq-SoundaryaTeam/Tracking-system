@@ -53,6 +53,8 @@ export const jobsAPI = {
   reassignJob: (jobId, driverId) => api.put(`/jobs/${jobId}/reassign`, { driver_id: driverId }),
   cancelJob: (jobId) => api.put(`/jobs/${jobId}/cancel`),
   collectPayment: (jobId, body = {}) => api.post(`/jobs/${jobId}/collect-payment`, body),
+  updateJob: (jobId, data) => api.put(`/jobs/${jobId}`, data),
+  deleteJob: (jobId) => api.delete(`/jobs/${jobId}`),
 
   getDailyStats: (date) => api.get(`/jobs/daily-stats?date=${date}`),
 
