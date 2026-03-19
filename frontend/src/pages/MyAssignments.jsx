@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { jobsAPI } from '../services/api';
-import { isDriver } from '../services/auth';
+import { isDriver, isSeller } from '../services/auth';
 import Map from '../components/Map';
 import DeliveryProofUpload from '../components/DeliveryProofUpload';
 import '../css/Myassignments.css';
@@ -41,6 +42,7 @@ function buildOptimalRoute(shopLat, shopLng, jobs) {
 }
 
 function MyAssignments() {
+  const navigate = useNavigate();
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -51,6 +53,7 @@ function MyAssignments() {
   const [paymentForms, setPaymentForms] = useState({});
 
   const userIsDriver = isDriver();
+  const userIsSeller = isSeller();
 
   useEffect(() => {
     fetchMyJobs();
@@ -59,22 +62,34 @@ function MyAssignments() {
   const fetchMyJobs = async () => {
     try {
       const res = await jobsAPI.getMyJobs({ per_page: 1000 });
+      const allJobs = res.data.jobs;
 
-      const activeJobs = res.data.jobs.filter(
-        (job) => job.status !== "COMPLETED"
-      );
-
-      const shop = JSON.parse(localStorage.getItem('juice_shop_location') || 'null') || { lat: 13.0827, lng: 80.2707 };
-      const jobsWithCoords = activeJobs.filter(j => j.latitude && j.longitude);
-      const jobsNoCoords   = activeJobs.filter(j => !j.latitude || !j.longitude);
-      const routeSorted = buildOptimalRoute(shop.lat, shop.lng, jobsWithCoords);
-
-      setJobs([...routeSorted, ...jobsNoCoords]);
-
+      if (userIsSeller) {
+        // Sellers see all their jobs
+        setJobs(allJobs);
+      } else {
+        // Drivers see only active (non-completed) jobs with route sorting
+        const activeJobs = allJobs.filter(job => job.status !== "COMPLETED");
+        const shop = JSON.parse(localStorage.getItem('juice_shop_location') || 'null') || { lat: 13.0827, lng: 80.2707 };
+        const jobsWithCoords = activeJobs.filter(j => j.latitude && j.longitude);
+        const jobsNoCoords   = activeJobs.filter(j => !j.latitude || !j.longitude);
+        const routeSorted = buildOptimalRoute(shop.lat, shop.lng, jobsWithCoords);
+        setJobs([...routeSorted, ...jobsNoCoords]);
+      }
     } catch (err) {
       setError(err.response?.data?.detail || 'Failed to fetch jobs');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleDelete = async (jobId, serialNumber) => {
+    if (!window.confirm(`Delete job ${serialNumber}? This cannot be undone.`)) return;
+    try {
+      await jobsAPI.deleteJob(jobId);
+      fetchMyJobs();
+    } catch (err) {
+      setError(err.response?.data?.detail || 'Failed to delete job');
     }
   };
 
@@ -410,6 +425,24 @@ function MyAssignments() {
 
               <div className="flex gap-10" style={{ flexWrap: 'wrap' }}>
                 {getActionButtons(job)}
+                {userIsSeller && job.status === 'WAITING' && (
+                  <>
+                    <button
+                      className="btn"
+                      style={{ padding: '4px 10px', fontSize: '12px' }}
+                      onClick={() => navigate(`/edit-job/${job.id}`)}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      className="btn"
+                      style={{ padding: '4px 10px', fontSize: '12px', background: '#dc2626' }}
+                      onClick={() => handleDelete(job.id, job.serial_number)}
+                    >
+                      Delete
+                    </button>
+                  </>
+                )}
               </div>
             </div>
           ))}
