@@ -143,6 +143,16 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/my-jobs"
+          element={
+            <ProtectedRoute requiredRole={() => isDriver() || isSeller()}>
+              <Layout>
+                <MyAssignments />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
 
         <Route
           path="/dashboard"
