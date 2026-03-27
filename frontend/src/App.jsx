@@ -9,6 +9,7 @@ import AllJobs from './pages/AllJobs';
 import CreateJob from './pages/CreateJob';
 import EditJob from './pages/EditJob';
 import MyAssignments from './pages/MyAssignments';
+import MyJobs from './pages/MyJobs';
 import AvailableJobs from './pages/AvailableJobs';
 import Drivers from './pages/Drivers';
 import Sellers from './pages/Sellers';
@@ -146,9 +147,9 @@ function App() {
         <Route
           path="/my-jobs"
           element={
-            <ProtectedRoute requiredRole={() => isDriver() || isSeller()}>
+            <ProtectedRoute requiredRole={isSeller}>
               <Layout>
-                <MyAssignments />
+                <MyJobs />
               </Layout>
             </ProtectedRoute>
           }
